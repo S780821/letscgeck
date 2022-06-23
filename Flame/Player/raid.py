@@ -7,7 +7,7 @@ from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from Flame.data import RAID, REPLYRAID, FLAMESPAM, PORMS, SHAYRI
-from Flame.main import BOT
+from Flame.main import bot as Client
 from config import SUDO_USERS
 
 OWNER_ID = SUDO_USERS
@@ -15,7 +15,7 @@ que = {}
 hl = '/'
 
 
-@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sshayri(?: |$)(.*)" % hl))
+@Client.on(events.NewMessage(incoming=True, pattern=r"\%sshayri(?: |$)(.*)" % hl))
 async def spam(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝐒𝐡𝐚𝐲𝐫𝐢\n\nCommand:\n\n.shayri<count> <Username of User>\n\n.raid <count> <reply to a User>\n\nCount must be a integer."
     if e.sender_id in SUDO_USERS:
@@ -74,7 +74,7 @@ async def spam(e):
 
 
 
-@BOT.on(events.NewMessage(incoming=True))
+@Client.on(events.NewMessage(incoming=True))
 async def _(event):
     global que
     queue = que.get(event.sender_id)
@@ -89,7 +89,7 @@ async def _(event):
             reply_to=event.message.id,
         )
 
-@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sporms(?: |$)(.*)" % hl))
+@Client.on(events.NewMessage(incoming=True, pattern=r"\%sporms(?: |$)(.*)" % hl))
 async def spam(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝐏𝐨𝐫𝐦𝐬\n\nCommand:\n\n.porms <count> <Username of User>\n\n.porms <count> <reply to a User>\n\nCount must be a integer."
     if e.sender_id in SUDO_USERS:
@@ -148,7 +148,7 @@ async def spam(e):
 
 
 
-@BOT.on(events.NewMessage(incoming=True))
+@Client.on(events.NewMessage(incoming=True))
 async def _(event):
     global que
     queue = que.get(event.sender_id)
@@ -163,7 +163,7 @@ async def _(event):
             reply_to=event.message.id,
         )
 
-@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sraid(?: |$)(.*)" % hl))
+@Client.on(events.NewMessage(incoming=True, pattern=r"\%sraid(?: |$)(.*)" % hl))
 async def spam(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗥𝗮𝗶𝗱\n\nCommand:\n\n.raid <count> <Username of User>\n\n.raid <count> <reply to a User>\n\nCount must be a integer."
     if e.sender_id in SUDO_USERS:
@@ -222,7 +222,7 @@ async def spam(e):
 
 
 
-@BOT.on(events.NewMessage(incoming=True))
+@Client.on(events.NewMessage(incoming=True))
 async def _(event):
     global que
     queue = que.get(event.sender_id)
@@ -238,7 +238,7 @@ async def _(event):
         )
 
 
-@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sreplyraid(?: |$)(.*)" % hl))
+@Client.on(events.NewMessage(incoming=True, pattern=r"\%sreplyraid(?: |$)(.*)" % hl))
 async def _(e):
     global que
     usage = f"𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗥𝗲𝗽𝗹𝘆𝗥𝗮𝗶𝗱\n\nCommand:\n\n.replyraid <Username of User>\n\n.replyraid <reply to a User>."
@@ -291,7 +291,7 @@ async def _(e):
             await e.reply(usage)
 
 
-@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sdreplyraid(?: |$)(.*)" % hl))
+@Client.on(events.NewMessage(incoming=True, pattern=r"\%sdreplyraid(?: |$)(.*)" % hl))
 async def _(e):
     usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗗𝗲𝗮𝗰𝘁𝗶𝘃𝗮𝘁𝗲 𝗥𝗲𝗽𝗹𝘆𝗥𝗮𝗶𝗱\n\nCommand:\n\n.dreplyraid <Username of User>\n\n.dreplyraid <reply to a User>"
     global que    
@@ -325,7 +325,7 @@ async def _(e):
         else:
             await e.reply(usage, parse_mode=None, link_preview=None )
     
-@BOT.on(events.NewMessage(incoming=True, pattern=r"\%sdelayraid(?: |$)(.*)" % hl))
+@Client.on(events.NewMessage(incoming=True, pattern=r"\%sdelayraid(?: |$)(.*)" % hl))
 async def _(event):
    usage = "𝗠𝗼𝗱𝘂𝗹𝗲 𝗡𝗮𝗺𝗲 = 𝗗𝗘𝗟𝗔𝗬𝗥𝗔𝗜𝗗\n\nCommand:\n\n.delayraid <delay> <count> <Username of User>\n\n.delayraid <delay> <count> <reply to a User>\n\nCount and Sleeptime must be a integer."        
    if event.sender_id in SUDO_USERS:
