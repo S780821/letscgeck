@@ -57,7 +57,7 @@ else:
 call_py5 = PyTgCalls(user5)
 
 with Client(":umm:", API_ID, API_HASH, bot_token=BOT_TOKEN) as app:
-    me_BOT = app.get_me()
+    me_bot = app.get_me()
 
 Test = ASS_CLI_1
 ASS_CLI_2 = user
