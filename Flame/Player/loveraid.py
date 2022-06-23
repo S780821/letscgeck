@@ -7,7 +7,7 @@ from telethon import events
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from Flame.data import RAID, REPLYRAID, FLAMESPAM
-from Flame.main import bot
+from Flame.main import bot as Client
 from config import SUDO_USERS
 
 OWNER_ID = SUDO_USERS
